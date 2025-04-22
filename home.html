@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Plan Your Trip{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-body">
+        <h4 class="card-title mb-4 text-center">Plan Your Trip</h4>
+        <form method="POST" action="/results">
+          <div class="mb-3">
+            <label class="form-label">Budget ($)</label>
+            <input type="number" name="budget" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Preferred Weather</label>
+            <select name="weather" class="form-select" required>
+              <option value="hot">Hot</option>
+              <option value="cold">Cold</option>
+              <option value="mild">Mild</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Trip Duration (days)</label>
+            <input type="number" name="duration" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Travel Month</label>
+            <select name="month" class="form-select">
+              {% for m in ["January", "February", "March", "April", "May", "June", 
+                           "July", "August", "September", "October", "November", "December"] %}
+              <option value="{{ m }}">{{ m }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Find Destinations</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
