@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ destination.name }}{% endblock %}
+{% block content %}
+<div class="card shadow">
+  <img src="{{ destination.image_url }}" class="card-img-top" alt="{{ destination.name }}">
+  <div class="card-body">
+    <h3 class="card-title">{{ destination.name }}, {{ destination.country }}</h3>
+    <p class="card-text">{{ destination.description }}</p>
+
+    <ul class="list-group list-group-flush mt-3">
+      <li class="list-group-item">Climate: {{ destination.climate }}</li>
+      <li class="list-group-item">Average Cost: ${{ destination.avg_cost }}</li>
+      <li class="list-group-item">Recommended Duration: {{ destination.recommended_duration }} days</li>
+      <li class="list-group-item">Peak Season: {{ destination.peak_season }}</li>
+      {% if destination.off_season_tip %}
+      <li class="list-group-item text-info"><strong>Off-season Tip:</strong> {{ destination.off_season_tip }}</li>
+      {% endif %}
+      {% if destination.expert_note %}
+      <li class="list-group-item text-success"><strong>Expert Advice:</strong> {{ destination.expert_note }}</li>
+      {% endif %}
+    </ul>
+    
+    <a href="/results" class="btn btn-secondary mt-4">Back to Results</a>
+  </div>
+</div>
+{% endblock %}
